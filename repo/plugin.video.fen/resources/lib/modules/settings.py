@@ -361,13 +361,13 @@ def get_resolution():
 	return resolution_tuple[int(get_setting('fen.image_resolutions', '2'))]
 
 def get_language():
-	return get_setting('fen.meta_language', 'en')
+	return get_setting('fen.meta_language', 'fr')
 
 def get_meta_filter():
 	return get_setting('fen.meta_filter', 'true')
 
 def get_mpaa_region():
-	return get_setting('fen.meta_mpaa_region', 'US')
+	return get_setting('fen.meta_mpaa_region', 'FR')
 
 def widget_hide_watched():
 	return get_setting('fen.widget_hide_watched', 'false') == 'true'

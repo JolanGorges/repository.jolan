@@ -100,10 +100,11 @@ def make_alias_dict(meta, title):
 	aliases = []
 	alternative_titles = meta.get('alternative_titles', [])
 	original_title = meta['original_title']
-	country_codes = set([i.replace('GB', 'UK') for i in meta.get('country_codes', [])])
+	# country_codes = set([i.replace('GB', 'UK') for i in meta.get('country_codes', [])])
 	if alternative_titles: aliases = [{'title': i, 'country': ''} for i in alternative_titles]
 	if original_title not in alternative_titles: aliases.append({'title': original_title, 'country': ''})
-	if country_codes: aliases.extend([{'title': '%s %s' % (title, i), 'country': ''} for i in country_codes])
+	# if country_codes: aliases.extend([{'title': '%s %s' % (title, i), 'country': ''} for i in country_codes])
+	if title not in alternative_titles: aliases.insert(0, {'title': title, 'country': ''})
 	return aliases
 
 def internal_results(provider, sources):

@@ -12,7 +12,7 @@ metacache_get_season, metacache_set_season = metacache.get_season, metacache.set
 backup_resolutions = {'poster': 'w780', 'fanart': 'w1280', 'still': 'original', 'profile': 'h632', 'clearlogo': 'original'}
 default_custom_artwork = {'custom_poster': '', 'custom_fanart': '', 'custom_clearlogo': ''}
 writer_credits = ('Author', 'Writer', 'Screenplay', 'Characters')
-alt_titles_check, trailers_check, finished_show_check, empty_value_check = ('US', 'GB', 'UK', ''), ('Trailer', 'Teaser'), ('Ended', 'Canceled'), ('', 'None', None)
+alt_titles_check, trailers_check, finished_show_check, empty_value_check = ('US', 'GB', 'UK', 'FR'), ('Trailer', 'Teaser'), ('Ended', 'Canceled'), ('', 'None', None)
 tmdb_image_url, youtube_url, date_format = 'https://image.tmdb.org/t/p/%s%s', 'plugin://plugin.video.youtube/play/?video_id=%s', '%Y-%m-%d'
 EXPIRES_1_DAYS, EXPIRES_4_DAYS, EXPIRES_7_DAYS, EXPIRES_14_DAYS, EXPIRES_30_DAYS, EXPIRES_182_DAYS = 1, 4, 7, 14, 30, 182
 invalid_error_codes = (6, 34, 37)
@@ -76,6 +76,9 @@ def movie_meta(id_type, media_id, user_info, current_date, current_time=None):
 		tmdb_id, imdb_id = data_get('id', ''), data_get('imdb_id', '')
 		rating, votes = data_get('vote_average', ''), data_get('vote_count', '')
 		plot, tagline, premiered = data_get('overview', ''), data_get('tagline', ''), data_get('release_date', '')
+		if plot == '':
+			try: plot = [i['data']['overview'] for i in data_get('translations')['translations'] if i['iso_639_1'] == 'en'][0]
+			except: pass
 		extra_images = data_get('images', {})
 		if extra_images:
 			images['poster'] = [tmdb_image_url % (image_resolution['poster'], (i['file_path'] if i['file_path'].endswith('jpg') \
@@ -234,6 +237,9 @@ def tvshow_meta(id_type, media_id, user_info, current_date, current_time=None):
 		tmdb_id, imdb_id, tvdb_id = data_get('id', ''), external_ids.get('imdb_id', ''), external_ids.get('tvdb_id', 'None')
 		rating, votes = data_get('vote_average', ''), data_get('vote_count', '')
 		plot, tagline, premiered = data_get('overview', ''), data_get('tagline', ''), data_get('first_air_date', '')
+		if plot == '':
+			try: plot = [i['data']['overview'] for i in data_get('translations')['translations'] if i['iso_639_1'] == 'en'][0]
+			except: pass
 		season_data, total_seasons = data_get('seasons'), data_get('number_of_seasons')
 		extra_images = data_get('images', {})
 		if extra_images:

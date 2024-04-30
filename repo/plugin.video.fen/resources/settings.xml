@@ -7,7 +7,7 @@
 			<group id="1" label="33185">
 				<setting id="update.action" type="integer" label="33188" help="">
 					<level>0</level>
-					<default>0</default>
+					<default>3</default>
 					<constraints>
 						<options>
 							<option label="32521">0</option>
@@ -918,14 +918,14 @@
 			<group id="3" label="32658">
 				<setting id="meta_language_display" type="string" label="32145" help="">
 					<level>0</level>
-					<default>English</default>
+					<default>French</default>
 					<control type="button" format="action">
 						<data>RunPlugin(plugin://plugin.video.fen/?mode=meta_language_choice)</data>
 					</control>
 				</setting>
 				<setting id="meta_mpaa_region_display" type="string" label="33132" help="">
 					<level>0</level>
-					<default>United States</default>
+					<default>France</default>
 					<control type="button" format="action">
 						<data>RunPlugin(plugin://plugin.video.fen/?mode=mpaa_region_choice)</data>
 					</control>
@@ -2825,7 +2825,7 @@
 				</setting>
 				<setting id="meta_language" type="string" label="meta_language" help="">
 					<level>0</level>
-					<default>en</default>
+					<default>fr</default>
 					<dependencies>
 						<dependency type="visible">
 							<condition on="property" name="InfoBool">hidden</condition>
@@ -2837,7 +2837,7 @@
 				</setting>
 				<setting id="meta_mpaa_region" type="string" label="meta_language" help="">
 					<level>0</level>
-					<default>US</default>
+					<default>FR</default>
 					<dependencies>
 						<dependency type="visible">
 							<condition on="property" name="InfoBool">hidden</condition>
