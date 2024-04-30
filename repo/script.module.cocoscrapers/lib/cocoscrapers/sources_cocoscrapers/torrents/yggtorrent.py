@@ -12,7 +12,7 @@ class source:
 	hasEpisodes = True
 	def __init__(self):
 		self.language = ['fr']
-		self.base_link = "https://www3.yggtorrent.qa"
+		self.base_link = "https://www3.yggtorrent.cool"
 		self.search_link = '/engine/search?name=%s&category=2145&sub_category=all&do=search&order=desc&sort=size'
 		self.min_seeders = 0
 
