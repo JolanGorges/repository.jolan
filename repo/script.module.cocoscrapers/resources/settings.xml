@@ -317,6 +317,11 @@
 					<default>false</default>
 					<control type="toggle"/>
 				</setting>
+				<setting id="provider.yggtorrent" type="boolean" label="32557" help="">
+					<level>0</level>
+					<default>true</default>
+					<control type="toggle"/>
+				</setting>
 				<setting id="provider.yourbittorrent" type="boolean" label="32126" help="">
 					<level>0</level>
 					<default>false</default>

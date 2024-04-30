@@ -43,6 +43,7 @@ zooqle (priority=5)
 2 request html parsed sites (slow, priority=6-9):
 --------------------------------------------
 1337x (priority=8)
+yggtorrent (priority=8)
 ettv (priority=6) dead site as of 2-26-22 and now removed
 ibit (priority=7) dead site and now removed 06-27-23
 isohunt2 (priority=7)

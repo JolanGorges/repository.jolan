@@ -696,7 +696,7 @@ msgid "Make a basic HTTP request to make sure your settings are correct."
 msgstr ""
 
 msgctxt "#32557"
-msgid ""
+msgid "YGGTORRENT (Pack capable)"
 msgstr ""
 
 msgctxt "#32558"
