@@ -9,12 +9,12 @@ from modules.utils import safe_string, remove_accents
 
 kodi_dialog, select_dialog, ok_dialog, get_icon = kodi_utils.kodi_dialog, kodi_utils.select_dialog, kodi_utils.ok_dialog, kodi_utils.get_icon
 sleep, container_refresh, confirm_dialog = kodi_utils.sleep, kodi_utils.container_refresh, kodi_utils.confirm_dialog
-years_movies, years_tvshows, movie_genres, tvshow_genres = meta_lists.years_movies, meta_lists.years_tvshows, meta_lists.movie_genres, meta_lists.tvshow_genres
+languages, years_movies, years_tvshows, movie_genres, tvshow_genres = meta_lists.languages, meta_lists.years_movies, meta_lists.years_tvshows, meta_lists.movie_genres, meta_lists.tvshow_genres
 movie_certifications, networks, movie_certifications = meta_lists.movie_certifications, meta_lists.networks, meta_lists.movie_certifications
 watch_providers_movies, watch_providers_tvshows = meta_lists.watch_providers_movies, meta_lists.watch_providers_tvshows
 movie_sorts, tvshow_sorts, discover_items = meta_lists.movie_sorts, meta_lists.tvshow_sorts, meta_lists.discover_items
 
-base_url = 'https://api.themoviedb.org/3/discover/%s?language=en-US&region=US&with_original_language=en%s'
+base_url = 'https://api.themoviedb.org/3/discover/%s?language=fr&region=US%s'
 filter_list_id = 2100
 button_ids = (10, 11)
 button_actions = {10: 'Save and Exit', 11: 'Exit'}
@@ -90,6 +90,10 @@ class Discover(BaseDialog):
 		choice = self.selection_dialog(self.chosen_item['label'], [{'name': i['name']} for i in years], years)
 		if choice != None: self.set_key_values(self.chosen_item['url_insert_%s' % self.media_type] % str(choice['id']), str(choice['id']))
 
+	def languages(self):
+		choice = self.selection_dialog(self.chosen_item['label'], [{'name': i['name']} for i in languages], languages)
+		if choice != None: self.set_key_values(self.chosen_item['url_insert'] % str(choice['id']), str(choice['name']))
+	
 	def genres(self):
 		genres = movie_genres if self.media_type == 'movie' else tvshow_genres
 		if self.chosen_item['key'] == 'with_genres' and self.without_genres_display: genres = [i for i in genres if not i['name'] in self.without_genres_display.split(', ')]
